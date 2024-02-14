@@ -4,6 +4,7 @@ import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
+import CartProvider from '../Providers/CartProvider';
 
 import { useColorScheme } from '@/src/components/useColorScheme';
 
@@ -49,10 +50,12 @@ function RootLayoutNav() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+      <CartProvider>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+        <Stack.Screen name="Cart" options={{ presentation: 'modal' }} />
       </Stack>
+      </CartProvider>
     </ThemeProvider>
   );
 }
